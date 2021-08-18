@@ -204,6 +204,7 @@ export type SubscriptionPaymentRefundedWebhook = {
 } & WebhookBase;
 
 export type PaymentSucceededWebhook = {
+  alert_name: 'payment_succeeded';
   balance_currency: string;
   balance_earnings: string;
   balance_fee: string;
@@ -232,6 +233,7 @@ export type PaymentSucceededWebhook = {
 } & WebhookBase;
 
 export type PaymentRefundedWebhook = {
+  alert_name: 'payment_refunded';
   amount: string;
   balance_currency: string;
   balance_earnings_decrease: string;
@@ -254,8 +256,9 @@ export type PaymentRefundedWebhook = {
 } & WebhookBase;
 
 export type LockerProcessedWebhook = {
+  alert_name: 'locker_processed';
   checkout_id: string;
-  checkout_recovery: '0' | '1'; // is this correct?
+  checkout_recovery: 0 | 1;
   coupon: string;
   download: string;
   email: string;
@@ -269,6 +272,7 @@ export type LockerProcessedWebhook = {
 };
 
 export type PaymentDisputeCreatedWebhook = {
+  alert_name: 'payment_dispute_created';
   amount: string;
   balance_amount: string;
   balance_currency: string;
@@ -284,6 +288,7 @@ export type PaymentDisputeCreatedWebhook = {
 } & WebhookBase;
 
 export type PaymentDisputeClosedWebhook = {
+  alert_name: 'payment_dispute_closed';
   amount: string;
   balance_amount: string;
   balance_currency: string;
@@ -299,6 +304,7 @@ export type PaymentDisputeClosedWebhook = {
 } & WebhookBase;
 
 export type HighRiskTransactionCreatedWebhook = {
+  alert_name: 'high_risk_transaction_created';
   case_id: string;
   checkout_id: string;
   created_at: string;
@@ -312,6 +318,7 @@ export type HighRiskTransactionCreatedWebhook = {
 } & WebhookBase;
 
 export type HighRiskTransactionUpdatedWebhook = {
+  alert_name: 'high_risk_transaction_updated';
   case_id: string;
   checkout_id: string;
   created_at: string;
@@ -326,6 +333,7 @@ export type HighRiskTransactionUpdatedWebhook = {
 } & WebhookBase;
 
 export type TransferCreatedWebhook = {
+  alert_name: 'transfer_created';
   amount: string;
   currency: string;
   payout_id: string;
@@ -333,6 +341,7 @@ export type TransferCreatedWebhook = {
 } & WebhookBase;
 
 export type TransferPaidWebhook = {
+  alert_name: 'transfer_paid';
   amount: string;
   currency: string;
   payout_id: string;
@@ -340,6 +349,7 @@ export type TransferPaidWebhook = {
 } & WebhookBase;
 
 export type NewAudienceMemberWebhook = {
+  alert_name: 'new_audience_member';
   created_at: string;
   email: string;
   marketing_consent: 0 | 1;
@@ -353,6 +363,7 @@ export type NewAudienceMemberWebhook = {
 } & WebhookBase;
 
 export type UpdateAudienceMemberWebhook = {
+  alert_name: 'update_audience_member';
   new_customer_email: string;
   new_marketing_consent: 0 | 1;
   old_customer_email: string;
@@ -363,6 +374,7 @@ export type UpdateAudienceMemberWebhook = {
 } & WebhookBase;
 
 export type InvoicePaidWebhook = {
+  alert_name: 'invoice_paid';
   payment_id: string;
   amount: string;
   sale_gross: string;
@@ -401,6 +413,7 @@ export type InvoicePaidWebhook = {
 } & WebhookBase;
 
 export type InvoiceSentWebhook = {
+  alert_name: 'invoice_sent';
   payment_id: string;
   amount: string;
   sale_gross: string;
@@ -433,6 +446,7 @@ export type InvoiceSentWebhook = {
 } & WebhookBase;
 
 export type InvoiceOverdueWebhook = {
+  alert_name: 'invoice_overdue';
   payment_id: string;
   amount: string;
   sale_gross: string;
