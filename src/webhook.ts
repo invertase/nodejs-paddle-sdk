@@ -51,6 +51,7 @@ export type SubscriptionUpdatedWebhook = {
   new_price: string;
   new_quantity: string;
   new_unit_price: string;
+  next_bill_date: string;
   old_price: string;
   old_quantity: string;
   old_unit_price: string;
