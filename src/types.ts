@@ -9,7 +9,7 @@ export type ListCouponsParameters = {
   product_id: number;
 };
 
-export type ListCouponsResponse = {
+export type Coupon = {
   coupon: string;
   description: string;
   discount_type: 'flat' | 'percentage';
@@ -19,7 +19,9 @@ export type ListCouponsResponse = {
   times_used: number;
   is_recurring: boolean;
   expires: string;
-}[];
+};
+
+export type ListCouponsResponse = Coupon[];
 
 export type CreateCouponsParameters = {
   // Will be randomly generated if not specified.
@@ -88,19 +90,21 @@ export type UpdateCouponsResponse = {
   updated: number;
 };
 
+export type Product = {
+  id: number;
+  name: string;
+  description: string | null;
+  base_price: number;
+  sale_price: null;
+  screenshots: Record<string, unknown>[];
+  icon: string;
+  currency: 'USD' | 'GBP' | 'EUR';
+};
+
 export type ListProductsResponse = {
   total: number;
   count: number;
-  products: {
-    id: number;
-    name: string;
-    description: string | null;
-    base_price: number;
-    sale_price: null;
-    screenshots: Record<string, unknown>[];
-    icon: string;
-    currency: 'USD' | 'GBP' | 'EUR';
-  }[];
+  products: Product[];
 };
 
 export type GenerateLicenseParameters = {
@@ -112,10 +116,12 @@ export type GenerateLicenseParameters = {
   expires_at?: string;
 };
 
-export type GenerateLicenseResponse = {
+export type License = {
   license_code: string;
   expires_at: string;
 };
+
+export type GenerateLicenseResponse = License;
 
 export type GeneratePayLinkParameters = {
   /**
@@ -188,8 +194,10 @@ export type GeneratePayLinkParameters = {
   vat_postcode?: string;
 };
 
+export type PayLink = string;
+
 export type GeneratePayLinkResponse = {
-  url: string;
+  url: PayLink;
 };
 
 export type ListTransactionsEntity = 'user' | 'subscription' | 'order' | 'checkout' | 'product';
@@ -203,7 +211,7 @@ export type ListTransactionsParameters = {
   page?: number;
 };
 
-export type ListTransactionsResponse = {
+export type Transaction = {
   order_id: string;
   checkout_id: string;
   amount: string;
@@ -224,7 +232,9 @@ export type ListTransactionsResponse = {
     marketing_consent: boolean;
   };
   receipt_url: string;
-}[];
+};
+
+export type ListTransactionsResponse = Transaction[];
 
 export type RefundPaymentParameters = {
   // The order ID of the payment you wish to refund. NB. Subscription orders are hyphenated and one-time orders are an integer.
@@ -244,7 +254,7 @@ export type ListPlansParameters = {
   plan?: number;
 };
 
-export type ListPlansResponse = {
+export type Plan = {
   id: number;
   name: string;
   billing_type: PlanType;
@@ -252,7 +262,9 @@ export type ListPlansResponse = {
   initial_price: { [currency_code: string]: string | number };
   recurring_price: { [currency_code: string]: string | number };
   trial_days: number;
-}[];
+};
+
+export type ListPlansResponse = Plan[];
 
 export type CreatePlanParameters = {
   // The name of the subscription plan.
@@ -290,7 +302,7 @@ export type ListUsersParameters = {
   results_per_page?: number;
 };
 
-export type ListUsersResponse = {
+export type User = {
   subscription_id: number;
   plan_id: number;
   user_id: number;
@@ -322,7 +334,9 @@ export type ListUsersResponse = {
     | {
         payment_method: 'paypal';
       };
-}[];
+};
+
+export type ListUsersResponse = User[];
 
 export type UpdateUserParameters = {
   // The ID of the subscription you’re updating.
@@ -370,14 +384,16 @@ export type ListModifiersParameters = {
   plan_id?: string;
 };
 
-export type ListModifiersResponse = {
+export type Modifier = {
   modifier_id: number;
   subscription_id: number;
   amount: string;
   currency: string;
   is_recurring: boolean;
   description?: string;
-}[];
+};
+
+export type ListModifiersResponse = Modifier[];
 
 export type CreateModifiersParameters = {
   // The ID of the subscription that you want to add a modifier for.
@@ -415,7 +431,7 @@ export type ListPaymentsParameters = {
   is_one_off_charge?: 0 | 1;
 };
 
-export type ListPaymentsResponse = {
+export type Payment = {
   id: number;
   subscription_id: number;
   amount: number;
@@ -424,7 +440,9 @@ export type ListPaymentsResponse = {
   is_paid: 0 | 1;
   is_one_off_charge: 0 | 1;
   receipt_url: string;
-}[];
+};
+
+export type ListPaymentsResponse = Payment[];
 
 export type ReschedulePaymentParameters = {
   // The upcoming subscription payment ID. This can be obtained by calling the List Payments API.
@@ -463,6 +481,17 @@ export type GetWebhookHistoryParameters = {
   query_tail?: string;
 };
 
+export type WebhookHistory = {
+  id: string;
+  alert_name: string;
+  status: string;
+  created_at: string;
+  updated_at: string;
+  attempts: number;
+  // The fields included are dependent upon the alert_name.
+  fields: PaddleWebhook;
+};
+
 export type GetWebhookHistoryResponse = {
   current_page: number;
   total_pages: number;
@@ -470,14 +499,5 @@ export type GetWebhookHistoryResponse = {
   total_alerts: number;
   query_head: string;
   query_tail: string;
-  data: {
-    id: string;
-    alert_name: string;
-    status: string;
-    created_at: string;
-    updated_at: string;
-    attempts: number;
-    // The fields included are dependent upon the alert_name.
-    fields: PaddleWebhook;
-  }[];
+  data: WebhookHistory[];
 };
