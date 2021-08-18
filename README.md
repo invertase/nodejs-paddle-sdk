@@ -46,65 +46,65 @@ try {
 
 **Coupons**
 
-- (listCoupons)[https://developer.paddle.com/api-reference/product-api/coupons/listcoupons]
-- (createCoupon)[https://developer.paddle.com/api-reference/product-api/coupons/createcoupon]
-- (deleteCoupon)[https://developer.paddle.com/api-reference/product-api/coupons/deletecoupon]
-- (deleteCoupon)[https://developer.paddle.com/api-reference/product-api/coupons/deletecoupon]
-- (updateCoupon)[https://developer.paddle.com/api-reference/product-api/coupons/updatecoupon]
+- [listCoupons](https://developer.paddle.com/api-reference/product-api/coupons/listcoupons)
+- [createCoupon](https://developer.paddle.com/api-reference/product-api/coupons/createcoupon)
+- [deleteCoupon](https://developer.paddle.com/api-reference/product-api/coupons/deletecoupon)
+- [deleteCoupon](https://developer.paddle.com/api-reference/product-api/coupons/deletecoupon)
+- [updateCoupon](https://developer.paddle.com/api-reference/product-api/coupons/updatecoupon)
 
 **Products**
 
-- (listProducts)[https://developer.paddle.com/api-reference/product-api/products/getproducts]
+- [listProducts](https://developer.paddle.com/api-reference/product-api/products/getproducts)
 
 **Licenses**
 
-- (generateLicense)[https://developer.paddle.com/api-reference/product-api/licenses/createlicense]
+- [generateLicense](https://developer.paddle.com/api-reference/product-api/licenses/createlicense)
 
 **Pay Links**
 
-- (generatePayLink)[https://developer.paddle.com/api-reference/product-api/pay-links/createpaylink]
+- [generatePayLink](https://developer.paddle.com/api-reference/product-api/pay-links/createpaylink)
 
 **Transactions**
 
-- (listTransactions)[https://developer.paddle.com/api-reference/product-api/transactions/listtransactions]
+- [listTransactions](https://developer.paddle.com/api-reference/product-api/transactions/listtransactions)
 
 **Payments**
 
-- (refundPayment)[https://developer.paddle.com/api-reference/product-api/payments/refundpayment]
+- [refundPayment](https://developer.paddle.com/api-reference/product-api/payments/refundpayment)
 
 ### Subscription API
 
 **Plans**
 
-- (listPlans)[https://developer.paddle.com/api-reference/subscription-api/plans/listplans]
-- (createPlan)[https://developer.paddle.com/api-reference/subscription-api/plans/createplan]
+- [listPlans](https://developer.paddle.com/api-reference/subscription-api/plans/listplans)
+- [createPlan](https://developer.paddle.com/api-reference/subscription-api/plans/createplan)
 
 **Users**
 
-- (listUsers)[https://developer.paddle.com/api-reference/subscription-api/users/listusers]
-- (updateUser)[https://developer.paddle.com/api-reference/subscription-api/users/updateuser]
-- (cancelUser)[https://developer.paddle.com/api-reference/subscription-api/users/canceluser]
+- [listUsers](https://developer.paddle.com/api-reference/subscription-api/users/listusers)
+- [updateUser](https://developer.paddle.com/api-reference/subscription-api/users/updateuser)
+- [cancelUser](https://developer.paddle.com/api-reference/subscription-api/users/canceluser)
 
 **Modifiers**
 
-- (listModifiers)[https://developer.paddle.com/api-reference/subscription-api/modifiers/listmodifiers]
-- (createModifier)[https://developer.paddle.com/api-reference/subscription-api/modifiers/createmodifier]
-- (deleteModifier)[https://developer.paddle.com/api-reference/subscription-api/modifiers/deletemodifier]
+- [listModifiers](https://developer.paddle.com/api-reference/subscription-api/modifiers/listmodifiers)
+- [createModifier](https://developer.paddle.com/api-reference/subscription-api/modifiers/createmodifier)
+- [deleteModifier](https://developer.paddle.com/api-reference/subscription-api/modifiers/deletemodifier)
 
 **Payments**
 
-- (listPayments)[https://developer.paddle.com/api-reference/subscription-api/payments/listpayments]
-- (reschedulePayment)[https://developer.paddle.com/api-reference/subscription-api/payments/updatepayment]
+- [listPayments](https://developer.paddle.com/api-reference/subscription-api/payments/listpayments)
+- [reschedulePayment](https://developer.paddle.com/api-reference/subscription-api/payments/updatepayment)
 
 **One-off Charges**
 
-- (createOneOffCharge)[https://developer.paddle.com/api-reference/subscription-api/one-off-charges/createcharge]
+- [createOneOffCharge](https://developer.paddle.com/api-reference/subscription-api/one-off-charges/createcharge)
 
 ### Alert API
 
 **Webhooks**
 
-- (getWebhookHistory)[https://developer.paddle.com/api-reference/alert-api/webhooks/webhooks]
+- [getWebhookHistory](https://developer.paddle.com/api-reference/alert-api/webhooks/webhooks)
 
 ## Webhooks
 
