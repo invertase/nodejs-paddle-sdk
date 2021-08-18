@@ -7,6 +7,20 @@ export type WebhookEventMap = {
   subscription_payment_succeeded: SubscriptionPaymentSucceededWebhook;
   subscription_payment_failed: SubscriptionPaymentFailedWebhook;
   subscription_payment_refunded: SubscriptionPaymentRefundedWebhook;
+  payment_succeeded: PaymentSucceededWebhook;
+  payment_refunded: PaymentRefundedWebhook;
+  locker_processed: LockerProcessedWebhook;
+  payment_dispute_created: PaymentDisputeCreatedWebhook;
+  payment_dispute_closed: PaymentDisputeClosedWebhook;
+  high_risk_transaction_created: HighRiskTransactionCreatedWebhook;
+  high_risk_transaction_updated: HighRiskTransactionUpdatedWebhook;
+  transfer_created: TransferCreatedWebhook;
+  transfer_paid: TransferPaidWebhook;
+  new_audience_member: NewAudienceMemberWebhook;
+  update_audience_member: UpdateAudienceMemberWebhook;
+  invoice_paid: InvoicePaidWebhook;
+  invoice_sent: InvoiceSentWebhook;
+  invoice_overdue: InvoiceOverdueWebhook;
 };
 
 type WebhookBase = {
@@ -21,7 +35,21 @@ export type PaddleWebhook =
   | SubscriptionCancelledWebhook
   | SubscriptionPaymentSucceededWebhook
   | SubscriptionPaymentFailedWebhook
-  | SubscriptionPaymentRefundedWebhook;
+  | SubscriptionPaymentRefundedWebhook
+  | PaymentSucceededWebhook
+  | PaymentRefundedWebhook
+  | LockerProcessedWebhook
+  | PaymentDisputeCreatedWebhook
+  | PaymentDisputeClosedWebhook
+  | HighRiskTransactionCreatedWebhook
+  | HighRiskTransactionUpdatedWebhook
+  | TransferCreatedWebhook
+  | TransferPaidWebhook
+  | NewAudienceMemberWebhook
+  | UpdateAudienceMemberWebhook
+  | InvoicePaidWebhook
+  | InvoiceSentWebhook
+  | InvoiceOverdueWebhook;
 
 export type SubscriptionCreatedWebhook = {
   alert_name: 'subscription_created';
@@ -136,6 +164,7 @@ export type SubscriptionPaymentFailedWebhook = {
   subscription_id: string;
   subscription_payment_id: string;
   subscription_plan_id: string;
+  unit_price: string;
   update_url: string;
   instalments: string;
   order_id: string;
@@ -172,4 +201,267 @@ export type SubscriptionPaymentRefundedWebhook = {
   tax_refund: string;
   unit_price: string;
   user_id: string;
+} & WebhookBase;
+
+export type PaymentSucceededWebhook = {
+  balance_currency: string;
+  balance_earnings: string;
+  balance_fee: string;
+  balance_gross: string;
+  balance_tax: string;
+  checkout_id: string;
+  country: string;
+  coupon: string;
+  currency: string;
+  customer_name: string;
+  earnings: string;
+  email: string;
+  fee: string;
+  ip: string;
+  marketing_consent: 0 | 1;
+  order_id: string;
+  passthrough: string;
+  payment_method: 'card' | 'paypal' | 'free' | 'apple-pay' | 'wire-transfer';
+  payment_tax: string;
+  product_id: string;
+  product_name: string;
+  quanity: string;
+  receipt_url: string;
+  sale_gross: string;
+  used_price_override: string;
+} & WebhookBase;
+
+export type PaymentRefundedWebhook = {
+  amount: string;
+  balance_currency: string;
+  balance_earnings_decrease: string;
+  balance_fee_refund: string;
+  balance_gross_refund: string;
+  balance_tax_refund: string;
+  checkout_id: string;
+  currency: string;
+  earnings_decrease: string;
+  email: string;
+  fee_refund: string;
+  gross_refund: string;
+  marketing_consent: 0 | 1;
+  order_id: string;
+  passthrough: string;
+  quantity: string;
+  refund_reason: string;
+  refund_type: 'full' | 'vat' | 'partial';
+  tax_refund: string;
+} & WebhookBase;
+
+export type LockerProcessedWebhook = {
+  checkout_id: string;
+  checkout_recovery: '0' | '1'; // is this correct?
+  coupon: string;
+  download: string;
+  email: string;
+  instructions: string;
+  license: string;
+  marketing_consent: 0 | 1;
+  order_id: string;
+  product_id: string;
+  quantity: string;
+  source: string;
+};
+
+export type PaymentDisputeCreatedWebhook = {
+  amount: string;
+  balance_amount: string;
+  balance_currency: string;
+  balance_fee: string;
+  checkout_id: string;
+  currency: string;
+  email: string;
+  fee_usd: string;
+  marketing_consent: 0 | 1;
+  order_id: string;
+  passthrough: string;
+  status: string;
+} & WebhookBase;
+
+export type PaymentDisputeClosedWebhook = {
+  amount: string;
+  balance_amount: string;
+  balance_currency: string;
+  balance_fee: string;
+  checkout_id: string;
+  currency: string;
+  email: string;
+  fee_usd: string;
+  marketing_consent: 0 | 1;
+  order_id: string;
+  passthrough: string;
+  status: string;
+} & WebhookBase;
+
+export type HighRiskTransactionCreatedWebhook = {
+  case_id: string;
+  checkout_id: string;
+  created_at: string;
+  customer_email_address: string;
+  customer_user_id: string;
+  marketing_consent: 0 | 1;
+  passthrough: string;
+  product_id: string;
+  risk_score: string;
+  status: 'pending';
+} & WebhookBase;
+
+export type HighRiskTransactionUpdatedWebhook = {
+  case_id: string;
+  checkout_id: string;
+  created_at: string;
+  customer_email_address: string;
+  customer_user_id: string;
+  marketing_consent: 0 | 1;
+  order_id: string;
+  passthrough: string;
+  product_id: string;
+  risk_score: string;
+  status: 'accepted' | 'rejected';
+} & WebhookBase;
+
+export type TransferCreatedWebhook = {
+  amount: string;
+  currency: string;
+  payout_id: string;
+  status: 'unpaid';
+} & WebhookBase;
+
+export type TransferPaidWebhook = {
+  amount: string;
+  currency: string;
+  payout_id: string;
+  status: 'paid';
+} & WebhookBase;
+
+export type NewAudienceMemberWebhook = {
+  created_at: string;
+  email: string;
+  marketing_consent: 0 | 1;
+  products: string;
+  source: string;
+  /**
+   * @deprecated use marketing_consent instead
+   */
+  subscribed: string;
+  user_id: string;
+} & WebhookBase;
+
+export type UpdateAudienceMemberWebhook = {
+  new_customer_email: string;
+  new_marketing_consent: 0 | 1;
+  old_customer_email: string;
+  old_marketing_consent: 0 | 1;
+  products: string;
+  source: string;
+  user_id: string;
+} & WebhookBase;
+
+export type InvoicePaidWebhook = {
+  payment_id: string;
+  amount: string;
+  sale_gross: string;
+  term_days: string;
+  status: 'paid';
+  purchase_order_number: string;
+  invoiced_at: string;
+  currency: string;
+  product_id: string;
+  product_name: string;
+  product_additional_information: string;
+  customer_name: string;
+  email: string;
+  customer_vat_number: string;
+  customer_company_number: string;
+  customer_address: string;
+  customer_city: string;
+  customer_state: string;
+  customer_zipcode: string;
+  county: string;
+  contract_id: string;
+  contract_start_date: string;
+  contract_end_date: string;
+  passthrough: string;
+  date_created: string;
+  balance_currency: string;
+  payment_tax: string;
+  payment_method: 'card' | 'paypal' | 'apple-pay' | 'wire-transfer';
+  fee: string;
+  earnings: string;
+  balance_earnings: string;
+  balance_fee: string;
+  balance_tax: string;
+  balance_gross: string;
+  date_reconciled: string;
+} & WebhookBase;
+
+export type InvoiceSentWebhook = {
+  payment_id: string;
+  amount: string;
+  sale_gross: string;
+  term_days: string;
+  status: 'unpaid';
+  purchase_order_number: string;
+  invoiced_at: string;
+  currency: string;
+  product_id: string;
+  product_name: string;
+  product_additional_information: string;
+  customer_id: string;
+  customer_name: string;
+  email: string;
+  customer_vat_number: string;
+  customer_company_number: string;
+  customer_address: string;
+  customer_city: string;
+  customer_state: string;
+  customer_zipcode: string;
+  county: string;
+  contract_id: string;
+  contract_start_date: string;
+  passthrough: string;
+  date_created: string;
+  balance_currency: string;
+  payment_tax: string;
+  fee: string;
+  earnings: string;
+} & WebhookBase;
+
+export type InvoiceOverdueWebhook = {
+  payment_id: string;
+  amount: string;
+  sale_gross: string;
+  term_days: string;
+  status: 'overdue';
+  purchase_order_number: string;
+  invoiced_at: string;
+  currency: string;
+  product_id: string;
+  product_name: string;
+  product_additional_information: string;
+  customer_id: string;
+  customer_name: string;
+  email: string;
+  customer_vat_number: string;
+  customer_company_number: string;
+  customer_address: string;
+  customer_city: string;
+  customer_state: string;
+  customer_zipcode: string;
+  county: string;
+  contract_id: string;
+  contract_start_date: string;
+  contract_end_date: string;
+  passthrough: string;
+  date_created: string;
+  balance_currency: string;
+  payment_tax: string;
+  payment_method: 'card' | 'paypal' | 'apple-pay' | 'wire-transfer';
+  fee: string;
+  earnings: string;
 } & WebhookBase;
