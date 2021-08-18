@@ -46,65 +46,65 @@ try {
 
 **Coupons**
 
-- (`listCoupons`)[https://developer.paddle.com/api-reference/product-api/coupons/listcoupons]
-- (`createCoupon`)[https://developer.paddle.com/api-reference/product-api/coupons/createcoupon]
-- (`deleteCoupon`)[https://developer.paddle.com/api-reference/product-api/coupons/deletecoupon]
-- (`deleteCoupon`)[https://developer.paddle.com/api-reference/product-api/coupons/deletecoupon]
-- (`updateCoupon`)[https://developer.paddle.com/api-reference/product-api/coupons/updatecoupon]
+- (listCoupons)[https://developer.paddle.com/api-reference/product-api/coupons/listcoupons]
+- (createCoupon)[https://developer.paddle.com/api-reference/product-api/coupons/createcoupon]
+- (deleteCoupon)[https://developer.paddle.com/api-reference/product-api/coupons/deletecoupon]
+- (deleteCoupon)[https://developer.paddle.com/api-reference/product-api/coupons/deletecoupon]
+- (updateCoupon)[https://developer.paddle.com/api-reference/product-api/coupons/updatecoupon]
 
 **Products**
 
-- (`listProducts`)[https://developer.paddle.com/api-reference/product-api/products/getproducts]
+- (listProducts)[https://developer.paddle.com/api-reference/product-api/products/getproducts]
 
 **Licenses**
 
-- (`generateLicense`)[https://developer.paddle.com/api-reference/product-api/licenses/createlicense]
+- (generateLicense)[https://developer.paddle.com/api-reference/product-api/licenses/createlicense]
 
 **Pay Links**
 
-- (`generatePayLink`)[https://developer.paddle.com/api-reference/product-api/pay-links/createpaylink]
+- (generatePayLink)[https://developer.paddle.com/api-reference/product-api/pay-links/createpaylink]
 
 **Transactions**
 
-- (`listTransactions`)[https://developer.paddle.com/api-reference/product-api/transactions/listtransactions]
+- (listTransactions)[https://developer.paddle.com/api-reference/product-api/transactions/listtransactions]
 
 **Payments**
 
-- (`refundPayment`)[https://developer.paddle.com/api-reference/product-api/payments/refundpayment]
+- (refundPayment)[https://developer.paddle.com/api-reference/product-api/payments/refundpayment]
 
 ### Subscription API
 
 **Plans**
 
-- (`listPlans`)[https://developer.paddle.com/api-reference/subscription-api/plans/listplans]
-- (`createPlan`)[https://developer.paddle.com/api-reference/subscription-api/plans/createplan]
+- (listPlans)[https://developer.paddle.com/api-reference/subscription-api/plans/listplans]
+- (createPlan)[https://developer.paddle.com/api-reference/subscription-api/plans/createplan]
 
 **Users**
 
-- (`listUsers`)[https://developer.paddle.com/api-reference/subscription-api/users/listusers]
-- (`updateUser`)[https://developer.paddle.com/api-reference/subscription-api/users/updateuser]
-- (`cancelUser`)[https://developer.paddle.com/api-reference/subscription-api/users/canceluser]
+- (listUsers)[https://developer.paddle.com/api-reference/subscription-api/users/listusers]
+- (updateUser)[https://developer.paddle.com/api-reference/subscription-api/users/updateuser]
+- (cancelUser)[https://developer.paddle.com/api-reference/subscription-api/users/canceluser]
 
 **Modifiers**
 
-- (`listModifiers`)[https://developer.paddle.com/api-reference/subscription-api/modifiers/listmodifiers]
-- (`createModifier`)[https://developer.paddle.com/api-reference/subscription-api/modifiers/createmodifier]
-- (`deleteModifier`)[https://developer.paddle.com/api-reference/subscription-api/modifiers/deletemodifier]
+- (listModifiers)[https://developer.paddle.com/api-reference/subscription-api/modifiers/listmodifiers]
+- (createModifier)[https://developer.paddle.com/api-reference/subscription-api/modifiers/createmodifier]
+- (deleteModifier)[https://developer.paddle.com/api-reference/subscription-api/modifiers/deletemodifier]
 
 **Payments**
 
-- (`listPayments`)[https://developer.paddle.com/api-reference/subscription-api/payments/listpayments]
-- (`reschedulePayment`)[https://developer.paddle.com/api-reference/subscription-api/payments/updatepayment]
+- (listPayments)[https://developer.paddle.com/api-reference/subscription-api/payments/listpayments]
+- (reschedulePayment)[https://developer.paddle.com/api-reference/subscription-api/payments/updatepayment]
 
 **One-off Charges**
 
-- (`createOneOffCharge`)[https://developer.paddle.com/api-reference/subscription-api/one-off-charges/createcharge]
+- (createOneOffCharge)[https://developer.paddle.com/api-reference/subscription-api/one-off-charges/createcharge]
 
 ### Alert API
 
 **Webhooks**
 
-- (`getWebhookHistory`)[https://developer.paddle.com/api-reference/alert-api/webhooks/webhooks]
+- (getWebhookHistory)[https://developer.paddle.com/api-reference/alert-api/webhooks/webhooks]
 
 ## Webhooks
 
@@ -125,7 +125,7 @@ Pass the request body to the `verifyWebhook` method to verify the signature:
 // Ensure you accept a JSON request body.
 app.use(express.json());
 
-app.post('/your-webhook-endpoint, (req, res) => {
+app.post('/your-webhook-endpoint', (req, res) => {
   const verified = paddle.verifyWebhook(req.body);
 
   if (!verified) {
@@ -143,7 +143,7 @@ The library provides type definitions for the various [Paddle Webhook events](ht
 ```ts
 import { PaddleWebhook } from '@invertase/node-paddle-sdk';
 
-app.post('/your-webhook-endpoint, (req, res) => {
+app.post('/your-webhook-endpoint', (req, res) => {
   const verified = paddle.verifyWebhook(req.body);
 
   if (!verified) {
@@ -157,6 +157,21 @@ app.post('/your-webhook-endpoint, (req, res) => {
     console.log(event.subscription_id);
   }
 });
+```
+
+## Sandbox Environment
+
+If using the Paddle Sandbox Environment, you can set the library to use a custom server endpoint:
+
+```js
+import { PaddleSDK } from '@invertase/node-paddle-sdk';
+
+const paddle = new PaddleSDK(
+  12345, // Required: Vendor ID
+  'xxxx', // Required: Vendor Auth Code
+  'xxxx', // Optional: Public Key
+  'https://sandbox-vendors.paddle.com/api/2.0', // Optional: Custom Server Endpoint
+);
 ```
 
 ## License
