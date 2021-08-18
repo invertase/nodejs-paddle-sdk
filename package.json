@@ -4,6 +4,7 @@
   "description": "A fully typed NodeJS library for integration with Paddle.",
   "main": "dist/node-paddle-sdk.cjs.js",
   "module": "dist/node-paddle-sdk.es.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "lint": "eslint './src/**/*.ts' --quiet --fix",
     "build": "rimraf dist && rollup --config rollup.config.js",
