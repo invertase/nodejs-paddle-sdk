@@ -17,6 +17,8 @@ import {
   GenerateLicenseResponse,
   GeneratePayLinkParameters,
   GeneratePayLinkResponse,
+  GetWebhookHistoryParameters,
+  GetWebhookHistoryResponse,
   ListCouponsParameters,
   ListCouponsResponse,
   ListModifiersParameters,
@@ -181,8 +183,8 @@ export class PaddleSDK {
     return this._request<CreateOneOffChargeResponse>('POST', `/subscription/${subscription_id}/charge`, rest);
   }
 
-  public async getWebhookHistory(parameters: CreateOneOffChargeParameters): Promise<CreateOneOffChargeResponse> {
-    return this._request<CreateOneOffChargeResponse>('POST', '/alert/webhooks', parameters);
+  public async getWebhookHistory(parameters: GetWebhookHistoryParameters): Promise<GetWebhookHistoryResponse> {
+    return this._request<GetWebhookHistoryResponse>('POST', '/alert/webhooks', parameters);
   }
 
   public verifyWebhook(body: any): boolean {
