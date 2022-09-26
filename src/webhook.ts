@@ -95,6 +95,7 @@ export type SubscriptionUpdatedWebhook = {
   paused_at?: string;
   paused_from?: string;
   paused_reason?: string;
+  update_url: string;
 } & WebhookBase;
 
 export type SubscriptionCancelledWebhook = {
