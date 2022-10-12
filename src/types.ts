@@ -216,6 +216,7 @@ export type Transaction = {
   checkout_id: string;
   amount: string;
   currency: 'USD' | 'GBP' | 'EUR';
+  custom_data: string;
   status: State;
   created_at: string;
   passthrough: string | null;
@@ -308,6 +309,7 @@ export type User = {
   user_id: number;
   user_email: string;
   marketing_consent: boolean;
+  custom_data: string;
   state: State;
   signup_date: string;
   last_payment: {

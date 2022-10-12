@@ -56,6 +56,7 @@ export type SubscriptionCreatedWebhook = {
   cancel_url: string;
   checkout_id: string;
   currency: string;
+  custom_data: string;
   email: string;
   marketing_consent: 0 | 1;
   next_bill_date: string;
@@ -84,6 +85,7 @@ export type SubscriptionUpdatedWebhook = {
   old_quantity: string;
   old_unit_price: string;
   currency: string;
+  custom_data: string;
   passthrough: string;
   status: State;
   subscription_id: string;
@@ -125,6 +127,7 @@ export type SubscriptionPaymentSucceededWebhook = {
   country: string;
   coupon: string;
   currency: string;
+  custom_data: string;
   customer_name: string;
   earnings: string;
   email: string;
@@ -156,6 +159,7 @@ export type SubscriptionPaymentFailedWebhook = {
   cancel_url: string;
   checkout_id: string;
   currency: string;
+  custom_data: string;
   email: string;
   marketing_consent: 0 | 1;
   next_retry_date: string;
@@ -183,6 +187,7 @@ export type SubscriptionPaymentRefundedWebhook = {
   balance_tax_refund: string;
   checkout_id: string;
   currency: string;
+  custom_data: string;
   earnings_decrease: string;
   email: string;
   fee_refund: string;
@@ -215,6 +220,7 @@ export type PaymentSucceededWebhook = {
   country: string;
   coupon: string;
   currency: string;
+  custom_data: string;
   customer_name: string;
   earnings: string;
   email: string;
@@ -243,6 +249,7 @@ export type PaymentRefundedWebhook = {
   balance_tax_refund: string;
   checkout_id: string;
   currency: string;
+  custom_data: string;
   earnings_decrease: string;
   email: string;
   fee_refund: string;
@@ -261,6 +268,7 @@ export type LockerProcessedWebhook = {
   checkout_id: string;
   checkout_recovery: 0 | 1;
   coupon: string;
+  custom_data: string;
   download: string;
   email: string;
   instructions: string;
@@ -309,6 +317,7 @@ export type HighRiskTransactionCreatedWebhook = {
   case_id: string;
   checkout_id: string;
   created_at: string;
+  custom_data: string;
   customer_email_address: string;
   customer_user_id: string;
   marketing_consent: 0 | 1;
@@ -325,6 +334,7 @@ export type HighRiskTransactionUpdatedWebhook = {
   created_at: string;
   customer_email_address: string;
   customer_user_id: string;
+  custom_data: string;
   marketing_consent: 0 | 1;
   order_id: string;
   passthrough: string;
