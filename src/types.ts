@@ -216,6 +216,7 @@ export type Transaction = {
   checkout_id: string;
   amount: string;
   currency: 'USD' | 'GBP' | 'EUR';
+  custom_data: string;
   status: State;
   created_at: string;
   passthrough: string | null;
@@ -308,6 +309,7 @@ export type User = {
   user_id: number;
   user_email: string;
   marketing_consent: boolean;
+  custom_data: string;
   state: State;
   signup_date: string;
   last_payment: {
@@ -342,7 +344,7 @@ export type UpdateUserParameters = {
   // The ID of the subscription you’re updating.
   subscription_id: number;
   // The new quantity to be applied to the subscription. If there are no changes to it, you will still need to set it with the current value when calling this API. For non-quantity subscription plans, always set the value to 1.
-  quantity: number;
+  quantity?: number;
   // Optional, but required if setting recurring_price. The currency that the recurring price should be charged in. E.g. USD, GBP, EUR, etc. This must be the same as the currency of the existing subscription.
   currency?: 'USD' | 'GBP' | 'EUR';
   // The new recurring price per quantity unit to apply to the subscription. Please note this is a singular price, i.e 11.00.
