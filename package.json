@@ -1,7 +1,7 @@
 {
   "name": "@invertase/node-paddle-sdk",
   "private": false,
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A fully typed NodeJS library for integration with Paddle.",
   "main": "dist/node-paddle-sdk.cjs.js",
   "module": "dist/node-paddle-sdk.es.js",
