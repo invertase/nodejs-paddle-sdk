@@ -1,6 +1,6 @@
 import { PaddleWebhook } from './webhook';
 
-export type State = 'active' | 'trailing' | 'past_due' | 'deleted' | 'paused';
+export type State = 'active' | 'trialing' | 'past_due' | 'deleted' | 'paused';
 
 export type PlanType = 'day' | 'week' | 'month' | 'year';
 
