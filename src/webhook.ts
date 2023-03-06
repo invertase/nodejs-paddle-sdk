@@ -233,7 +233,7 @@ export type PaymentSucceededWebhook = {
   payment_tax: string;
   product_id: string;
   product_name: string;
-  quanity: string;
+  quantity: string;
   receipt_url: string;
   sale_gross: string;
   used_price_override: string;
